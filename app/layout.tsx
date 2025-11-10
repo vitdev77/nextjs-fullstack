@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Poppins, Roboto_Flex } from 'next/font/google';
+import { StackProvider, StackTheme } from '@stackframe/stack';
+import { stackServerApp } from '@/stack/server';
 import './globals.css';
 
 const geistSans = Geist({
@@ -39,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <StackProvider app={stackServerApp}>
+          <StackTheme>{children}</StackTheme>
+        </StackProvider>
       </body>
     </html>
   );
