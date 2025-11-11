@@ -1,6 +1,6 @@
-// import { PrismaClient } from '@prisma/client';
-// const prisma = new PrismaClient();
-import { prisma } from '@/lib/prisma';
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+// import { prisma } from '@/lib/prisma';
 
 async function up() {
   const demoUserId = 'eb48d991-393c-43a2-91b5-f08c901f158e';
