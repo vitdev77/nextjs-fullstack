@@ -103,7 +103,7 @@ export default async function DashboardPage() {
                 Dashboard
               </h1>
               <p className="text-sm text-gray-500">
-                Welcome back! Here is an ovrview of your inventory.
+                Welcome back! Here is an overview of your inventory.
               </p>
             </div>
           </div>
