@@ -3,7 +3,6 @@ import Sidebar from '@/components/sidebar';
 import { deleteProduct } from '@/lib/actions/products';
 import { getCurrentUser } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { M_PLUS_1 } from 'next/font/google';
 
 export default async function InventoryPage({
   searchParams,
@@ -16,7 +15,7 @@ export default async function InventoryPage({
   const params = await searchParams;
   const q = (params.q ?? '').trim();
   const page = Math.max(1, Number(params.page ?? 1));
-  const pageSize = 2;
+  const pageSize = 3;
 
   const where = {
     userId,
