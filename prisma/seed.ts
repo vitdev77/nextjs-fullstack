@@ -7,7 +7,7 @@ async function up() {
 
   // Create sample products
   await prisma.product.createMany({
-    data: Array.from({ length: 25 }).map((_, i) => ({
+    data: Array.from({ length: 125 }).map((_, i) => ({
       userId: demoUserId,
       name: `Product ${i + 1}`,
       price: (Math.random() * 90 + 10).toFixed(2),

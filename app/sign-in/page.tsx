@@ -1,5 +1,5 @@
 import { SignIn } from '@stackframe/stack';
-import { CornerDownLeft, MoveLeft } from 'lucide-react';
+import { MoveLeft } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SignInPage() {
