@@ -65,10 +65,13 @@ export default async function DashboardPage() {
     weekEnd.setDate(weekEnd.getDate() + 6);
     weekEnd.setHours(23, 59, 59, 999);
 
-    const weekLabel = `${String(weekStart.getDate() + 1).padStart(
-      2,
-      '0'
-    )}/${String(weekStart.getMonth() + 1).padStart(2, '0')}`;
+    // const weekLabel = `${String(weekStart.getDate() + 1).padStart(
+    //   2,
+    //   '0'
+    // )}/${String(weekStart.getMonth() + 1).padStart(2, '0')}`;
+    const weekLabel = `${String(weekStart.getDate()).padStart(2, '0')}/${String(
+      weekStart.getMonth() + 1
+    ).padStart(2, '0')}`;
 
     const weekProducts = allProducts.filter((product) => {
       const productDate = new Date(product.createdAt);

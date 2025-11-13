@@ -25,7 +25,7 @@ export default function Pagination({
   };
 
   const getVisiblePages = () => {
-    const delta = 2;
+    const delta = 1;
     const range = [];
     const rangeWithDots = [];
 
@@ -50,7 +50,7 @@ export default function Pagination({
     if (curentPage + delta < totalPages - 1) {
       rangeWithDots.push('...', totalPages);
     } else {
-      rangeWithDots.push(1);
+      rangeWithDots.push(totalPages);
     }
 
     return rangeWithDots;
@@ -60,17 +60,19 @@ export default function Pagination({
 
   return (
     <nav className="flex flex-wrap items-center justify-center gap-1">
-      <Link
-        href={getPageUrl(curentPage - 1)}
-        className={`flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border ${
-          curentPage <= 1
-            ? 'text-gray-700/50 cursor-not-allowed bg-gray-100 border-transparent'
-            : 'text-gray-700 bg-white hover:bg-gray-100 border-gray-300'
-        }`}
-        aria-disabled={curentPage <= 1}
-      >
-        <ChevronLeft className="size-4" /> Previous
-      </Link>
+      {curentPage <= 1 ? (
+        <span className="flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border text-gray-700/50 cursor-not-allowed bg-gray-100 border-transparent">
+          <ChevronLeft className="size-4" /> Previous
+        </span>
+      ) : (
+        <Link
+          href={getPageUrl(curentPage - 1)}
+          className="flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border text-gray-700 bg-white hover:bg-gray-100 border-gray-300"
+          aria-disabled={curentPage <= 1}
+        >
+          <ChevronLeft className="size-4" /> Previous
+        </Link>
+      )}
 
       {visiblePages.map((page, key) => {
         if (page === '...') {
@@ -102,17 +104,19 @@ export default function Pagination({
         );
       })}
 
-      <Link
-        href={getPageUrl(curentPage + 1)}
-        className={`flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border ${
-          curentPage >= totalPages
-            ? 'text-gray-400 cursor-not-allowed bg-gray-100 border-transparent'
-            : 'text-gray-700 bg-white hover:bg-gray-100 border-gray-300'
-        }`}
-        aria-disabled={curentPage >= totalPages}
-      >
-        Next <ChevronRight className="size-4" />
-      </Link>
+      {curentPage >= totalPages ? (
+        <span className="flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border text-gray-700/50 cursor-not-allowed bg-gray-100 border-transparent">
+          Next <ChevronRight className="size-4" />
+        </span>
+      ) : (
+        <Link
+          href={getPageUrl(curentPage + 1)}
+          className="flex gap-1 items-center px-3 py-2 text-sm font-medium rounded-lg border text-gray-700 bg-white hover:bg-gray-100 border-gray-300"
+          aria-disabled={curentPage >= totalPages}
+        >
+          Next <ChevronRight className="size-4" />
+        </Link>
+      )}
     </nav>
   );
 }
